@@ -2,15 +2,22 @@ import datetime
 
 class User:
     """
+    class for defining the password locker object 
     """
     
     def __init__(self,username,password):
         '''
+        defining the User class attributes
         '''
         self.username = username
         self.password = password
     
     def check(self):
+        '''
+        method designed to check if you entered 
+        the correct credential while login in and 
+        direct you to the menu to choose the operation to perform
+        '''
         print("Enter username")
         self.u = input()
         print("Enter password")
@@ -58,6 +65,8 @@ class User:
 
 class Credentials:
     """
+    a class to help you perform different operation like
+    Store existing,creating new credentials, view or delete 
     """
     user_list = []
     # def __init__(self,account_name,username,password):
@@ -68,6 +77,9 @@ class Credentials:
     #     self.password = password
     
     def store(self):
+        '''
+        method to help storing the existing credentials 
+        '''
         self.acc_credential = []
         print("Enter the existing account name like twitter")
         acc =input()
@@ -82,6 +94,9 @@ class Credentials:
         # print(self.user_list)
 
     def view(self):
+        '''
+        method to help view stored credentials 
+        '''
         print("Your Credentials")
         if len(self.user_list)==0:
             print("no any stored credentials")
@@ -89,6 +104,9 @@ class Credentials:
              print(self.user_list[i])
     
     def create(self):
+        '''
+        method to help create the new credentials 
+        '''
         self.new_credential = []
         print("Enter the new account name ")
         new_acc =input()
@@ -119,6 +137,9 @@ class Credentials:
         self.user_list.append(self.new_credential)
         # print(self.user_list)
     def delete(self):
+        '''
+        method to help delete the credentials 
+        '''
         if len(self.user_list)==0:
             print("no any stored credentials")
         else:
@@ -129,8 +150,7 @@ class Credentials:
             print("choose which one to delete")
             delchoice = int(input())
             del self.user_list[delchoice]
-
-            
+           
 
 userinfo = User("alain","devis123")
 userinfo.check()
