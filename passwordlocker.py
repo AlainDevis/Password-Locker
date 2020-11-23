@@ -1,3 +1,5 @@
+import datetime
+
 class User:
     """
     """
@@ -13,15 +15,14 @@ class User:
         self.u = input()
         print("Enter password")
         self.p = input()
-        if (self.u == self.username and self.p == self.password):
-            # self.usercredentials = Credentials()
-            # self.usercredentials.store()    
+        if (self.u == self.username and self.p == self.password):  
             print(
                 """
                 1.Store Credentials
                 2.View Credentials
-                3.Delete
-                4.Exit
+                3.create Credentials
+                4.Delete Credentials
+                5.Exit
                 """
             )   
             print("What would you like to do? ")
@@ -29,9 +30,18 @@ class User:
             if(self.choice == '1'):
                 self.usercredentials = Credentials()
                 self.usercredentials.store()  
+                print("please fill again your password locker credential to choose another option")
+                self.check()
             elif (self.choice == '2'):
                 self.usercredentials = Credentials()
                 self.usercredentials.view() 
+                self.check()
+            elif (self.choice == '3'):
+                self.usercredentials = Credentials()
+                self.usercredentials.create()  
+                self.check()          
+            else:
+                 exit()
         else:
             print("invalid username or password")
 
@@ -58,14 +68,45 @@ class Credentials:
         acc_password =input()
         self.acc_credential.append(acc_password)
         self.user_list.append(self.acc_credential)
-        print(self.user_list)
+        # print(self.user_list)
 
     def view(self):
         print("Your Credentials")
         if len(self.user_list)==0:
             print("no any stored credentials")
-        for i in self.user_list:
+        for i in range(len(self.user_list)):
              print(self.user_list[i])
+    
+    def create(self):
+        self.new_credential = []
+        print("Enter the account name like twitter")
+        new_acc =input()
+        self.new_credential.append(new_acc)
+        print("Enter the username of your account")
+        new_username =input()
+        self.new_credential.append(new_username)
+        print("""
+            1.generate password
+            2.Non generated password
+        """)
+        print("What would you like to do? ")
+        self.choice=input() 
+        if (self.choice == '1'):
+            x = datetime.datetime.now()
+            y = x.strftime("%Y")
+            pwd = ''
+            for i in range(len(new_username)):
+                z = new_username[i]
+                pwd = pwd + z
+                if i >1:
+                    break
+            new_password = pwd + "$" + y
+        else:
+            print("Enter the password of your account")
+            new_password =input()
+        self.new_credential.append(new_password)
+        self.user_list.append(self.new_credential)
+        # print(self.user_list)
 
 
 userinfo = User("alain","devis123")
