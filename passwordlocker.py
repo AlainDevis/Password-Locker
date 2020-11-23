@@ -30,16 +30,27 @@ class User:
             if(self.choice == '1'):
                 self.usercredentials = Credentials()
                 self.usercredentials.store()  
+                print("--------------------------------------------------------------------------")
                 print("please fill again your password locker credential to choose another option")
                 self.check()
             elif (self.choice == '2'):
                 self.usercredentials = Credentials()
                 self.usercredentials.view() 
+                print("--------------------------------------------------------------------------")
+                print("please fill again your password locker credential to choose another option")
                 self.check()
             elif (self.choice == '3'):
                 self.usercredentials = Credentials()
                 self.usercredentials.create()  
-                self.check()          
+                print("--------------------------------------------------------------------------")
+                print("please fill again your password locker credential to choose another option")
+                self.check()    
+            elif (self.choice == '4'):
+                self.usercredentials = Credentials()
+                self.usercredentials.delete()  
+                print("--------------------------------------------------------------------------")
+                print("please fill again your password locker credential to choose another option")
+                self.check()        
             else:
                  exit()
         else:
@@ -58,13 +69,13 @@ class Credentials:
     
     def store(self):
         self.acc_credential = []
-        print("Enter the account name like twitter")
+        print("Enter the existing account name like twitter")
         acc =input()
         self.acc_credential.append(acc)
-        print("Enter the username of your account")
+        print("Enter the existing username of your account")
         acc_username =input()
         self.acc_credential.append(acc_username)
-        print("Enter the password of your account")
+        print("Enter the existing password of your account")
         acc_password =input()
         self.acc_credential.append(acc_password)
         self.user_list.append(self.acc_credential)
@@ -79,10 +90,10 @@ class Credentials:
     
     def create(self):
         self.new_credential = []
-        print("Enter the account name like twitter")
+        print("Enter the new account name ")
         new_acc =input()
         self.new_credential.append(new_acc)
-        print("Enter the username of your account")
+        print("Enter the username of your new account")
         new_username =input()
         self.new_credential.append(new_username)
         print("""
@@ -107,7 +118,19 @@ class Credentials:
         self.new_credential.append(new_password)
         self.user_list.append(self.new_credential)
         # print(self.user_list)
+    def delete(self):
+        if len(self.user_list)==0:
+            print("no any stored credentials")
+        else:
+            index=1
+            for i in range(len(self.user_list)): 
+                print("press %d to delete %s" %(index,self.user_list[i]))
+                index=index+1
+            print("choose which one to delete")
+            delchoice = int(input())
+            del self.user_list[delchoice]
 
+            
 
 userinfo = User("alain","devis123")
 userinfo.check()
