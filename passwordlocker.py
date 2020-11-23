@@ -14,8 +14,24 @@ class User:
         print("Enter password")
         self.p = input()
         if (self.u == self.username and self.p == self.password):
-            self.usercredentials = Credentials()
-            self.usercredentials.store()
+            # self.usercredentials = Credentials()
+            # self.usercredentials.store()    
+            print(
+                """
+                1.Store Credentials
+                2.View Credentials
+                3.Delete
+                4.Exit
+                """
+            )   
+            print("What would you like to do? ")
+            self.choice=input()   
+            if(self.choice == '1'):
+                self.usercredentials = Credentials()
+                self.usercredentials.store()  
+            elif (self.choice == '2'):
+                self.usercredentials = Credentials()
+                self.usercredentials.view() 
         else:
             print("invalid username or password")
 
@@ -44,7 +60,12 @@ class Credentials:
         self.user_list.append(self.acc_credential)
         print(self.user_list)
 
-    def 
+    def view(self):
+        print("Your Credentials")
+        if len(self.user_list)==0:
+            print("no any stored credentials")
+        for i in self.user_list:
+             print(self.user_list[i])
 
 
 userinfo = User("alain","devis123")
