@@ -122,7 +122,7 @@ class Credentials:
         if len(self.user_list)==0:
             print("no any stored credentials")
         else:
-            index=1
+            index=0
             for i in range(len(self.user_list)): 
                 print("press %d to delete %s" %(index,self.user_list[i]))
                 index=index+1
